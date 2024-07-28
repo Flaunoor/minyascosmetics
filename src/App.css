@@ -90,6 +90,7 @@ li{
 a{
   text-decoration: none;
   color: black;
+  white-space: nowrap; /*same line*/
 }
 a,button{
   cursor: pointer;
@@ -104,7 +105,8 @@ body{
   color: black;
   font-family: var(--body-font);
 
-  font-size: var(--small-screen-FZ);
+  scroll-behavior: smooth;
+
 }
 
 
@@ -309,6 +311,13 @@ body{
   font-style: italic;
 
   
+}
+.scrolled{
+  background-color: var(--soft-pink-color);
+  z-index: 5;
+}
+.hidden{
+  transform: translateY(-100%);
 }
 
 
@@ -671,6 +680,7 @@ body{
 .product-card{
   gap: 0;
   position: relative;
+  
 }
 
 .product-pic{
@@ -693,8 +703,10 @@ body{
 }
 .product-pic img{
   width: 220px;
-  height: 230px;
+  height: 250px;
   overflow: hidden;
+
+ 
 }
 
 /*=================
@@ -708,19 +720,24 @@ body{
 }
 .app__blog-sec h3{
   text-align: center;
+  z-index: 2;
 }
-.blog-container{
+/* .blog-container{
   height: max-content; 
-}
+} */
 .blog-card{
   width: 250px;
-  height: 350px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 10px;
+  
+  transition: var(--hover-transition);
+
+  z-index: 2;
   
 }
 
@@ -750,16 +767,16 @@ body{
   position: absolute;
   top: 0;
   right: 0;
-  width: 3rem;
-  height: 5rem;
+  width: 4rem;
+  height: 6rem;
   animation: move 5s linear infinite;
 }
 .bg-butterfly{
   position: absolute;
   top:  0;
   left: 0;
-  width: 3rem;
-  height: 5rem;
+  width: 4rem;
+  height: 6rem;
   animation: move 5s linear infinite;
   
 }
@@ -811,6 +828,46 @@ body{
 
 }
 
+.sold-offer{
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid pink;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  position: relative;
+}
+.sold-offer::before{
+  content: "";
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  
+  border: 2px solid rgba(128, 0, 128, 0.205);
+  background-color: transparent;
+  animation: rotate360 7s linear infinite;
+
+
+}
+.sold-offer::after{
+  content: "";
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  
+  border: 2px solid purple;
+  
+  animation: rotate-360 10s linear infinite;
+  animation-delay: 2s;
+}
+
 /*=======================
   testimonial section
 ========================*/
@@ -826,7 +883,7 @@ body{
 
 .testimonial-card{
   width: 250px;
-  height: 200px;
+  height: auto;
   overflow: hidden;
   background-color: white;
   border: 1px solid var(--soft-pink-color);
@@ -880,6 +937,7 @@ background-color: white;
 }
 .left-div input{
   width: 80%;
+  font-size: var(--fs-s);
 }
 .left-div button{
   width: 20%;
@@ -888,7 +946,8 @@ background-color: white;
   top: 0;
   bottom: 0;
   margin: 0.2rem;
-  padding: 0.5rem;
+  padding: 0.5em;
+  font-size: var(--fs-s);
   border-radius: 10px;
   background-color: var(--soft-pink-color);
   color: white;
@@ -920,73 +979,126 @@ li img:hover{
  }
 
 
-@media (min-width:1200px) {
- :root{
-  --fs-s : 1rem;
-  --fs-m : 1.3rem
- }
-  /*Reused style*/
-  .section-box{
-    gap: 2rem;
-    padding: 2rem;
+
+@media (min-width:575px) {
+  /*about us section*/
+   .app__aboutUs-sec .container .about-pic{
+    width: 15rem;
+    height: 18rem;
+   }
+  /*products section*/
+
+
+
+  /*blog section*/
+
+  .bg-leaf{
+    width: 8rem;
+    height: 12rem;
   }
-
-/*===============
-  topbar
-================*/
-
-.topbar{
-  position: fixed;
-  top:0;
-  right: 0;
-  left: 0;
-
-  height: 3rem;
-
-  padding: 0.5rem;
+  .bg-butterfly{
    
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+    width: 8rem;
+    height: 12rem;
+  }
+
+ 
+
+}
+
+@media (min-width:768px) {
   
-  border-bottom: 1px solid var(--soft-pink-color);
-  transition: transform 0.3s ease-in-out;
+  .app__aboutUs-sec .container{
   
-}
-.topbar div{
-  gap: 5px;
-}
-.topbar div:first-child{
-  margin-left: 1rem;
-  justify-content: flex-start;
-}
-.topbar div:nth-child(2){
-  margin-right: 1rem;
-  justify-content: flex-end;
-}
-.topbar p{
-  font-size: 15px ;
-  font-family: var(--body-font);
-  font-weight: var(--light-font);
-}
-.topbar img{
-  height: 15px;
-  width: 15px;
+    display: grid;
+    grid-template-columns: 0.75fr 1fr 0.75fr;
+    align-items: center;
+    justify-items: center;
+    
+     
+  }
+
+  .app__aboutUs-sec .container .about-pic{
+    height: 20rem;
+    width: 13rem;
+  }
+
+  /*blog section*/
+  .bg-leaf{
+    width: 10rem;
+    height: 15rem;
+  }
+
+  .bg-butterfly{
+    width: 7rem;
+    height: 15rem;
+  }
 }
 
-
-
-  /*=================
-        Header
-   =================*/
-
-  body{
-    font-size: var(--large-screen-FZ);
+@media (min-width:992px) {
+  :root{
+    --fs-s : 1.1rem;
+    --fs-m : 1.3rem
+   }
+    /*Reused style*/
+    .section-box{
+      gap: 2rem;
+      padding: 2rem;
+    }
+  
+  /*===============
+    topbar
+  ================*/
+  
+  .topbar{
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+  
+    height: 3rem;
+  
+    padding: 0.5rem;
+     
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    border-bottom: 1px solid var(--soft-pink-color);
+    transition: transform 0.3s ease-in-out;
+    
+  }
+  .topbar div{
+    gap: 5px;
+  }
+  .topbar div:first-child{
+    margin-left: 1rem;
+    justify-content: flex-start;
+  }
+  .topbar div:nth-child(2){
+    margin-right: 1rem;
+    justify-content: flex-end;
+  }
+  .topbar p{
+    font-size: 15px ;
+    font-family: var(--body-font);
+    font-weight: var(--light-font);
+  }
+  .topbar img{
+    height: 15px;
+    width: 15px;
   }
   
- 
+  
+  
+  /*=================
+      Header
+  =================*/
+
+
   .side-menu, .sidebar-top{
     display: none;
   }
+
   .header{
     background-color:transparent;
     padding-inline: 3rem;
@@ -1039,198 +1151,47 @@ li img:hover{
 
   .contact-div{display:  none;}
   
-   /*=================
-        Home section
-   =================*/
 
-   .app__home-sec{
-    justify-content:center;
-    
-    margin-top: 7rem;
- 
-   }
-   .container-top{
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 1rem;
-    
-  }
-  
-  
+  /*=================
+      Home section
+  =================*/
+
   .container-bottom div{
-    height: 220px;
-    width: 220px;
+    height: 190px;
+    width: 190px;
     overflow: hidden;
   
   }
 
 
-  /*================
-    About us section
-  ===================*/
-
-  .app__aboutUs-sec{
-    margin-top: 2rem;
-  }
-  
-  .app__aboutUs-sec .container{
-  
-    display: grid;
-    grid-template-columns: 0.75fr 1fr 0.75fr;
-    align-items: center;
-    justify-items: center;
-    
-     
-  }
-  .app__aboutUs-sec .container .about-pic{
-    height: 27rem;
-    width: 20rem;
-  }
-
-  .hidden-item{
-    opacity: 0;
-    filter: blur(5px);
-    transition: all 3s;
-    transform: translateY(-100%);
-   }
-  
-  .show{
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0%);
-  }
-
-
-
+   
   /*=================
      Products section
   ===================*/
- 
-  .product-pic img{
+ .product-pic img{
     width: 270px;
-    height: 280px;
+    height: 290px;
   }
 
-  /*=================
-     Blog section
-  ==================*/
+/*blog section*/
 
- 
   .bg-leaf{
-    width: 15rem;
-    height: 25rem;
+    width: 12rem;
+    height: 17rem;
   }
   .bg-butterfly{
    
-    width: 12rem;
-    height: 20rem;
+    width: 8rem;
+    height: 13rem;
   }
 
- 
-  .blog-card{
-    width: 320px;
-    height: 420px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    transition: ease-in-out 0.3s all;
-  }
- 
-  .blog-card img{
-    width: 320px;
-    height: 220px;
-    border-radius: 10px;
-  }
- 
-  .blog-card p:nth-child(5){
-   
-    font-weight: var(--bold-font);
-    color: var(--soft-pink-color);
-    cursor: pointer;
-  }
 
   /*=======================
-     best selling products
-  =========================*/
-  .best-seller-section{
- 
-    height: 100vh;
-  
-  }
-
-  .sold-offer{
-    position: absolute;
-    top: 3rem;
-    right: 3rem;
-  
-    padding: 2rem;
-    width: 7rem;
-    height: 7rem;
-    border: 3px solid pink;
-    font-size: 20px;
-    font-family: var(--header-font);
-    font-weight: var(--bold-font);
-    color: black;
-    
-    background-color: transparent;
-    text-align: center;
-    font-weight: var(--bold-font);
-  
-  }
-  
-  
-  .sold-offer::before{
-    content: "";
-    
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2rem;
-    width: 7rem;
-    height: 7rem;
-    
-    border: 3px solid rgba(128, 0, 128, 0.205);
-    background-color: transparent;
-    animation: rotate360 7s linear infinite;
-  
-  
-  }
-  .sold-offer::after{
-    content: "";
-    
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2rem;
-    width: 7rem;
-    height: 7rem;
-    
-    border: 3px solid purple;
-    background-color: transparent;
-    animation: rotate-360 10s linear infinite;
-    animation-delay: 2s;
-  }
-
-  
-/*=======================
-  testimonial section
- ========================*/
-
-  .app__testimonial h3{
-    font-size: 1.4rem;
-  }
-  .testimonial-card{
-    width: 300px;
-    height: 250px;
-  }
-
-  /*=======================
-        footer section
- ========================*/
+       footer section
+========================*/
 
 
- .footer-container{
+.footer-container{
   display: grid;
   grid-template-columns: 1.25fr 0.75fr 0.5fr;
   justify-items: center;
@@ -1243,10 +1204,10 @@ li img:hover{
  }
  .footer-container div:nth-child(2){
   display: flex;
-}
-.footer-container ul{
+ }
+ .footer-container ul{
   flex-direction: column;
-}
+ }
  .left-div div{
   position: relative;
   width: 95%;
@@ -1279,13 +1240,172 @@ li img:hover{
   cursor: pointer;
   transition:var(--hover-transition);
  }
-
+ 
  .footer-container ul li:hover{
    color: var(--soft-pink-hover-color);
    text-shadow: var(--text-shadow);
  }
  
+ 
+}
 
 
 
+@media (min-width:1200px) {
+
+
+ 
+  
+  
+  /*=================
+       Home section
+  =================*/
+
+  .app__home-sec{
+   justify-content:center;
+   
+   margin-top: 7rem;
+
+  }
+  .container-top{
+   display: grid;
+   grid-template-columns: 1.25fr 0.75fr;
+   gap: 1rem;
+   
+ }
+ 
+ 
+ .container-bottom div{
+   height: 220px;
+   width: 220px;
+   overflow: hidden;
+ 
+ }
+
+
+ /*================
+   About us section
+ ===================*/
+
+ .app__aboutUs-sec{
+   margin-top: 2rem;
+ }
+ 
+
+ .app__aboutUs-sec .container .about-pic{
+   height: 27rem;
+   width: 20rem;
+ }
+
+ .hidden-item{
+   opacity: 0;
+   filter: blur(5px);
+   transition: all 3s;
+   transform: translateY(-100%);
+  }
+ 
+ .show{
+   opacity: 1;
+   filter: blur(0);
+   transform: translateY(0%);
+ }
+
+
+
+
+ /*=================
+    Blog section
+ ==================*/
+
+
+ .bg-leaf{
+   width: 15rem;
+   height: 25rem;
+ }
+ .bg-butterfly{
+  
+   width: 12rem;
+   height: 20rem;
+ }
+
+
+ .blog-card{
+   width: 320px;
+ }
+
+ .blog-card img{
+   width: 320px;
+   height: 220px;
+ 
+ }
+
+ .blog-card p:nth-child(5){
+  
+   font-weight: var(--bold-font);
+   color: var(--soft-pink-color);
+   cursor: pointer;
+ }
+
+ /*=======================
+    best selling products
+ =========================*/
+ .best-seller-section{
+
+   height: 100vh;
+ 
+ }
+
+ .sold-offer{
+   position: absolute;
+   top: 3rem;
+   right: 3rem;
+ 
+   padding: 2rem;
+   width: 7rem;
+   height: 7rem;
+   border: 3px solid pink;
+   font-size: 20px;
+   font-family: var(--header-font);
+   font-weight: var(--bold-font);
+
+
+   text-align: center;
+   font-weight: var(--bold-font);
+ 
+ }
+ 
+ 
+ .sold-offer::before{
+   padding: 2rem;
+   width: 7rem;
+   height: 7rem;
+   
+   border: 3px solid rgba(128, 0, 128, 0.205);
+   
+ 
+ }
+ .sold-offer::after{
+   
+   padding: 2rem;
+   width: 7rem;
+   height: 7rem;
+   
+   border: 3px solid purple;
+ 
+ }
+
+ 
+/*=======================
+ testimonial section
+========================*/
+
+ .app__testimonial h3{
+   font-size: 1.4rem;
+ }
+ .testimonial-card{
+   width: 300px;
+   height: auto;
+ }
+
+ 
 }

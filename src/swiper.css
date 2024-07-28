@@ -10,8 +10,8 @@
 }
   
 .swiper-slide {
-    width: 270px;
-    height: 350px;
+    width: 220px;
+    height: 300px;
 
     display: flex;
     flex-direction: column;
@@ -29,19 +29,23 @@
     transition: ease-in-out 0.3s all;
 }
 
+
+@media (min-width:992px) {
+    .swiper-slide{
+        width: 270px;
+        height: 350px;
+    }
+}
+
 .swiper-slide:hover{
     
     box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.205);
 }
-@media (max-width:575px) {
-    .swiper-slide{
-        width: 220px;
-        height: 300px;
-    }
-    
-}
 
-  
+
+
+
+
 
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
@@ -91,3 +95,6 @@ content: '';
 .swiper-pagination .swiper-pagination-bullet-active {
 background: pink;
 }
+
+
+

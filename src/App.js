@@ -161,9 +161,9 @@ function App() {
 
          <ul className='flex-center navbar-list p-text'>
            <li><a href="#home">Home</a></li>
-           <li><a href="#">About us</a></li>
-           <li><a href="#">Products</a></li>
-           <li><a href="#">Blog</a></li>
+           <li><a href="#aboutus">About us</a></li>
+           <li><a href="#products">Products</a></li>
+           <li><a href="#blog">Blog</a></li>
          </ul>
 
 
@@ -315,7 +315,7 @@ function App() {
       </section>
 
 
-      <section className='app__products section-box flex-center'>
+      <section className='app__products section-box flex-center' id='products'>
         <h2 className='section-title'>Our beauty</h2>
        
 
@@ -490,7 +490,7 @@ function App() {
 
 
 
-      <section className='app__blog-sec  section-box flex-center'>
+      <section className='app__blog-sec  section-box flex-center' id='blog'>
           <h2 className='section-title'>Our Blog</h2>
           <h3 className='p-sub-title'> Expert advice, tips and tricks for healthy & glowing skin</h3>
           <img src={images.women_bg} alt="bg" className='bg-leaf'/>
@@ -640,10 +640,10 @@ function App() {
           </div>
           <div>
             <ul className='flex-center p-sub-title'>
-              <li>Home</li>
-              <li>About us</li>
-              <li>Products</li>
-              <li>Blog</li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#aboutus">About us</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#blog">Blog</a></li>
             </ul>
           </div>
           <div>
